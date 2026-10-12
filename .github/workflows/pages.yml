@@ -25,7 +25,7 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: 웹 버전 빌드 (오프라인 번들)
         run: python3 build.py app
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v3
         with: {path: dist/app}
   deploy:
