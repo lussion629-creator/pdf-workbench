@@ -26,7 +26,7 @@ jobs:
       - name: 웹 버전 빌드 (오프라인 번들)
         run: python3 build.py app
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with: {path: dist/app}
   deploy:
     needs: build
