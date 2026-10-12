@@ -16,7 +16,7 @@
     "@tesseract.js-data/eng": "^1.0.0",
     "@tesseract.js-data/kor": "^1.0.0",
     "html2canvas": "^1.4.1",
-    "jszip": "^3.10.1",
+    "jszip": "^3.10.2",
     "mammoth": "^1.12.3",
     "pdfjs-dist": "^3.11.174",
     "pptxgenjs": "^3.12.0",
