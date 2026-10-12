@@ -1,0 +1,15 @@
+import fs from 'fs';
+import * as ResEdit from 'resedit';
+import * as PE from 'pe-library';
+const [,, inp, ico, out] = process.argv;
+const exe = PE.NtExecutable.from(fs.readFileSync(inp), {ignoreCert: true});
+const res = PE.NtExecutableResource.from(exe);
+const iconFile = ResEdit.Data.IconFile.from(fs.readFileSync(ico));
+ResEdit.Resource.IconGroupEntry.replaceIconsForResource(res.entries, 1, 1033, iconFile.icons.map(i => i.data));
+const vi = ResEdit.Resource.VersionInfo.createEmpty();
+vi.setFileVersion(1, 0, 0, 0, 1033); vi.setProductVersion(1, 0, 0, 0, 1033);
+vi.setStringValues({lang: 1033, codepage: 1200}, {ProductName: 'PDF 작업대', FileDescription: 'PDF 작업대', CompanyName: 'PDF 작업대', OriginalFilename: 'PDF작업대.exe', InternalName: 'PDFWorkbench', FileVersion: '1.0.0', ProductVersion: '1.0.0', LegalCopyright: ''});
+vi.outputToResourceEntries(res.entries);
+res.outputResource(exe);
+fs.writeFileSync(out, Buffer.from(exe.generate()));
+console.log('wrote', out, fs.statSync(out).size);

@@ -1,0 +1,22 @@
+# GitHub에 올라온 모든 커밋을 서버에서 다시 점검합니다.
+# (내 컴퓨터의 자동 점검은 건너뛸 수 있지만, 이 점검은 GitHub에서 항상 실행됩니다.)
+name: security
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: 비밀 파일·하드코딩 키 점검
+        run: bash scripts/security_check.sh
+      - name: 커밋 기록 전체에서 비밀 파일 찾기
+        run: |
+          BAD=$(git -c core.quotepath=off log --all --name-only --pretty=format: | sort -u \
+            | grep -E '(^|/)(\.env(\..+)?|[^/]*\.(jks|keystore|p12|pfx|pem|key)|keystore\.properties)$' | grep -v '\.env\.example$' || true)
+          if [ -n "$BAD" ]; then echo "과거 커밋에 비밀 파일이 있습니다. 해당 키를 폐기하고 새로 만드세요:"; echo "$BAD"; exit 1; fi
+          echo "커밋 기록에 비밀 파일 없음"

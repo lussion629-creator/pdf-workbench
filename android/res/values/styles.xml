@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar"><item name="android:windowBackground">@color/win_bg</item><item name="android:colorAccent">@color/ic_bg</item></style></resources>

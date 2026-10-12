@@ -1,0 +1,12 @@
+# 취약한 라이브러리를 매주 자동으로 알려 주고 업데이트 PR을 만듭니다.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule: {interval: weekly}
+  - package-ecosystem: gomod
+    directory: /desktop
+    schedule: {interval: weekly}
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: {interval: weekly}

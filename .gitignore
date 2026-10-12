@@ -1,0 +1,20 @@
+# secrets — never commit
+android/release.jks
+android/keystore.properties
+*.jks
+*.keystore
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.pem
+*.key
+# build output and dependencies
+node_modules/
+dist/
+build/
+desktop/www/
+desktop/build/
+test/out/
+*.idsig
