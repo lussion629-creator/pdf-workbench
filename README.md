@@ -14,9 +14,9 @@ AI 요약·번역은 Claude 안에서 열었을 때만 쓸 수 있습니다.
 
 [Releases](../../releases/latest)에서 기기에 맞는 파일을 받으세요.
 
-- Windows: `PDF작업대.exe`
-- Mac: `PDF작업대-Mac.zip` (압축을 풀어 앱을 응용 프로그램 폴더로 옮깁니다)
-- Android: `PDF작업대-<버전>.apk` (Android 7.0 이상)
+- Windows: `PDF-Workbench.exe`
+- Mac: `PDF-Workbench-Mac.zip` (압축을 풀어 앱을 응용 프로그램 폴더로 옮깁니다)
+- Android: `PDF-Workbench-<버전>.apk` (Android 7.0 이상)
 
 결과 파일은 `다운로드/PDF작업대` 폴더에 저장됩니다.
 
